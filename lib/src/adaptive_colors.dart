@@ -1,6 +1,5 @@
 import 'package:adaptive_design_system/src/adaptive_screen_util.dart';
-import 'package:adaptive_design_system/src/colors/dark_colors.dart';
-import 'package:adaptive_design_system/src/colors/light_colors.dart';
+import 'package:adaptive_design_system/src/config/adaptive_config.dart';
 import 'package:flutter/material.dart';
 
 class AdaptiveColors {
@@ -55,220 +54,277 @@ class AdaptiveColors {
   static Color primaryColor(BuildContext context, {double? opacity}) {
     return _getDeviceColor(
       context: context,
-      lightMobile: LightThemeColors.primaryMobile,
-      lightTablet: LightThemeColors.primaryTablet,
-      lightDesktop: LightThemeColors.primaryDesktop,
-      darkMobile: DarkThemeColors.primaryMobile,
-      darkTablet: DarkThemeColors.primaryTablet,
-      darkDesktop: DarkThemeColors.primaryDesktop,
+      lightMobile:
+          AdaptiveConfig.lightConfig?.primaryMobile ??
+          Theme.of(context).colorScheme.primary,
+      lightTablet:
+          AdaptiveConfig.lightConfig?.primaryTablet ??
+          Theme.of(context).colorScheme.primary,
+      lightDesktop:
+          AdaptiveConfig.lightConfig?.primaryDesktop ??
+          Theme.of(context).colorScheme.primary,
+      darkMobile:
+          AdaptiveConfig.darkConfig?.primaryMobile ??
+          Theme.of(context).colorScheme.primary,
+      darkTablet:
+          AdaptiveConfig.darkConfig?.primaryTablet ??
+          Theme.of(context).colorScheme.primary,
+      darkDesktop:
+          AdaptiveConfig.darkConfig?.primaryDesktop ??
+          Theme.of(context).colorScheme.primary,
       opacity: opacity,
     );
   }
 
   static Color secondaryColor(BuildContext context, {double? opacity}) {
+    final scheme = Theme.of(context).colorScheme;
     return _getDeviceColor(
       context: context,
-      lightMobile: LightThemeColors.secondaryMobile,
-      lightTablet: LightThemeColors.secondaryTablet,
-      lightDesktop: LightThemeColors.secondaryDesktop,
-      darkMobile: DarkThemeColors.secondaryMobile,
-      darkTablet: DarkThemeColors.secondaryTablet,
-      darkDesktop: DarkThemeColors.secondaryDesktop,
+      lightMobile:
+          AdaptiveConfig.lightConfig?.secondaryMobile ?? scheme.secondary,
+      lightTablet:
+          AdaptiveConfig.lightConfig?.secondaryTablet ?? scheme.secondary,
+      lightDesktop:
+          AdaptiveConfig.lightConfig?.secondaryDesktop ?? scheme.secondary,
+      darkMobile:
+          AdaptiveConfig.darkConfig?.secondaryMobile ?? scheme.secondary,
+      darkTablet:
+          AdaptiveConfig.darkConfig?.secondaryTablet ?? scheme.secondary,
+      darkDesktop:
+          AdaptiveConfig.darkConfig?.secondaryDesktop ?? scheme.secondary,
       opacity: opacity,
     );
   }
 
   static Color errorColor(BuildContext context, {double? opacity}) {
+    final scheme = Theme.of(context).colorScheme;
     return _getDeviceColor(
       context: context,
-      lightMobile: LightThemeColors.errorMobile,
-      lightTablet: LightThemeColors.errorTablet,
-      lightDesktop: LightThemeColors.errorDesktop,
-      darkMobile: DarkThemeColors.errorMobile,
-      darkTablet: DarkThemeColors.errorTablet,
-      darkDesktop: DarkThemeColors.errorDesktop,
+      lightMobile: AdaptiveConfig.lightConfig?.errorMobile ?? scheme.error,
+      lightTablet: AdaptiveConfig.lightConfig?.errorTablet ?? scheme.error,
+      lightDesktop: AdaptiveConfig.lightConfig?.errorDesktop ?? scheme.error,
+      darkMobile: AdaptiveConfig.darkConfig?.errorMobile ?? scheme.error,
+      darkTablet: AdaptiveConfig.darkConfig?.errorTablet ?? scheme.error,
+      darkDesktop: AdaptiveConfig.darkConfig?.errorDesktop ?? scheme.error,
       opacity: opacity,
     );
   }
 
   static Color warningColor(BuildContext context, {double? opacity}) {
+    final scheme = Theme.of(context).colorScheme;
+    final fallback = scheme.tertiary;
     return _getDeviceColor(
       context: context,
-      lightMobile: LightThemeColors.warningMobile,
-      lightTablet: LightThemeColors.warningTablet,
-      lightDesktop: LightThemeColors.warningDesktop,
-      darkMobile: DarkThemeColors.warningMobile,
-      darkTablet: DarkThemeColors.warningTablet,
-      darkDesktop: DarkThemeColors.warningDesktop,
+      lightMobile: AdaptiveConfig.lightConfig?.warningMobile ?? fallback,
+      lightTablet: AdaptiveConfig.lightConfig?.warningTablet ?? fallback,
+      lightDesktop: AdaptiveConfig.lightConfig?.warningDesktop ?? fallback,
+      darkMobile: AdaptiveConfig.darkConfig?.warningMobile ?? fallback,
+      darkTablet: AdaptiveConfig.darkConfig?.warningTablet ?? fallback,
+      darkDesktop: AdaptiveConfig.darkConfig?.warningDesktop ?? fallback,
       opacity: opacity,
     );
   }
 
   static Color successColor(BuildContext context, {double? opacity}) {
+    final scheme = Theme.of(context).colorScheme;
+    final fallback = scheme.secondary;
     return _getDeviceColor(
       context: context,
-      lightMobile: LightThemeColors.successMobile,
-      lightTablet: LightThemeColors.successTablet,
-      lightDesktop: LightThemeColors.successDesktop,
-      darkMobile: DarkThemeColors.successMobile,
-      darkTablet: DarkThemeColors.successTablet,
-      darkDesktop: DarkThemeColors.successDesktop,
+      lightMobile: AdaptiveConfig.lightConfig?.successMobile ?? fallback,
+      lightTablet: AdaptiveConfig.lightConfig?.successTablet ?? fallback,
+      lightDesktop: AdaptiveConfig.lightConfig?.successDesktop ?? fallback,
+      darkMobile: AdaptiveConfig.darkConfig?.successMobile ?? fallback,
+      darkTablet: AdaptiveConfig.darkConfig?.successTablet ?? fallback,
+      darkDesktop: AdaptiveConfig.darkConfig?.successDesktop ?? fallback,
       opacity: opacity,
     );
   }
 
   static Color infoColor(BuildContext context, {double? opacity}) {
+    final scheme = Theme.of(context).colorScheme;
+    final fallback = scheme.primary;
     return _getDeviceColor(
       context: context,
-      lightMobile: LightThemeColors.infoMobile,
-      lightTablet: LightThemeColors.infoTablet,
-      lightDesktop: LightThemeColors.infoDesktop,
-      darkMobile: DarkThemeColors.infoMobile,
-      darkTablet: DarkThemeColors.infoTablet,
-      darkDesktop: DarkThemeColors.infoDesktop,
+      lightMobile: AdaptiveConfig.lightConfig?.infoMobile ?? fallback,
+      lightTablet: AdaptiveConfig.lightConfig?.infoTablet ?? fallback,
+      lightDesktop: AdaptiveConfig.lightConfig?.infoDesktop ?? fallback,
+      darkMobile: AdaptiveConfig.darkConfig?.infoMobile ?? fallback,
+      darkTablet: AdaptiveConfig.darkConfig?.infoTablet ?? fallback,
+      darkDesktop: AdaptiveConfig.darkConfig?.infoDesktop ?? fallback,
       opacity: opacity,
     );
   }
 
   static Color backgroundColor(BuildContext context, {double? opacity}) {
+    final theme = Theme.of(context);
+    final fallbackLight = theme.colorScheme.surface;
+    final fallbackDark = theme.colorScheme.surface;
     return _getDeviceColor(
       context: context,
-      lightMobile: LightThemeColors.backgroundMobile,
-      lightTablet: LightThemeColors.backgroundTablet,
-      lightDesktop: LightThemeColors.backgroundDesktop,
-      darkMobile: DarkThemeColors.backgroundMobile,
-      darkTablet: DarkThemeColors.backgroundTablet,
-      darkDesktop: DarkThemeColors.backgroundDesktop,
+      lightMobile:
+          AdaptiveConfig.lightConfig?.backgroundMobile ?? fallbackLight,
+      lightTablet:
+          AdaptiveConfig.lightConfig?.backgroundTablet ?? fallbackLight,
+      lightDesktop:
+          AdaptiveConfig.lightConfig?.backgroundDesktop ?? fallbackLight,
+      darkMobile: AdaptiveConfig.darkConfig?.backgroundMobile ?? fallbackDark,
+      darkTablet: AdaptiveConfig.darkConfig?.backgroundTablet ?? fallbackDark,
+      darkDesktop: AdaptiveConfig.darkConfig?.backgroundDesktop ?? fallbackDark,
       opacity: opacity,
     );
   }
 
   static Color surfaceColor(BuildContext context, {double? opacity}) {
+    final scheme = Theme.of(context).colorScheme;
     return _getDeviceColor(
       context: context,
-      lightMobile: LightThemeColors.surfaceMobile,
-      lightTablet: LightThemeColors.surfaceTablet,
-      lightDesktop: LightThemeColors.surfaceDesktop,
-      darkMobile: DarkThemeColors.surfaceMobile,
-      darkTablet: DarkThemeColors.surfaceTablet,
-      darkDesktop: DarkThemeColors.surfaceDesktop,
+      lightMobile: AdaptiveConfig.lightConfig?.surfaceMobile ?? scheme.surface,
+      lightTablet: AdaptiveConfig.lightConfig?.surfaceTablet ?? scheme.surface,
+      lightDesktop:
+          AdaptiveConfig.lightConfig?.surfaceDesktop ?? scheme.surface,
+      darkMobile: AdaptiveConfig.darkConfig?.surfaceMobile ?? scheme.surface,
+      darkTablet: AdaptiveConfig.darkConfig?.surfaceTablet ?? scheme.surface,
+      darkDesktop: AdaptiveConfig.darkConfig?.surfaceDesktop ?? scheme.surface,
       opacity: opacity,
     );
   }
 
   static Color cardColor(BuildContext context, {double? opacity}) {
+    final theme = Theme.of(context);
+    final fallback = theme.cardColor;
     return _getDeviceColor(
       context: context,
-      lightMobile: LightThemeColors.cardMobile,
-      lightTablet: LightThemeColors.cardTablet,
-      lightDesktop: LightThemeColors.cardDesktop,
-      darkMobile: DarkThemeColors.cardMobile,
-      darkTablet: DarkThemeColors.cardTablet,
-      darkDesktop: DarkThemeColors.cardDesktop,
+      lightMobile: AdaptiveConfig.lightConfig?.cardMobile ?? fallback,
+      lightTablet: AdaptiveConfig.lightConfig?.cardTablet ?? fallback,
+      lightDesktop: AdaptiveConfig.lightConfig?.cardDesktop ?? fallback,
+      darkMobile: AdaptiveConfig.darkConfig?.cardMobile ?? fallback,
+      darkTablet: AdaptiveConfig.darkConfig?.cardTablet ?? fallback,
+      darkDesktop: AdaptiveConfig.darkConfig?.cardDesktop ?? fallback,
       opacity: opacity,
     );
   }
 
   static Color textPrimaryColor(BuildContext context, {double? opacity}) {
+    final theme = Theme.of(context);
+    final fallback =
+        theme.textTheme.bodyLarge?.color ?? theme.colorScheme.onSurface;
     return _getDeviceColor(
       context: context,
-      lightMobile: LightThemeColors.textPrimaryMobile,
-      lightTablet: LightThemeColors.textPrimaryTablet,
-      lightDesktop: LightThemeColors.textPrimaryDesktop,
-      darkMobile: DarkThemeColors.textPrimaryMobile,
-      darkTablet: DarkThemeColors.textPrimaryTablet,
-      darkDesktop: DarkThemeColors.textPrimaryDesktop,
+      lightMobile: AdaptiveConfig.lightConfig?.textPrimaryMobile ?? fallback,
+      lightTablet: AdaptiveConfig.lightConfig?.textPrimaryTablet ?? fallback,
+      lightDesktop: AdaptiveConfig.lightConfig?.textPrimaryDesktop ?? fallback,
+      darkMobile: AdaptiveConfig.darkConfig?.textPrimaryMobile ?? fallback,
+      darkTablet: AdaptiveConfig.darkConfig?.textPrimaryTablet ?? fallback,
+      darkDesktop: AdaptiveConfig.darkConfig?.textPrimaryDesktop ?? fallback,
       opacity: opacity,
     );
   }
 
   static Color textSecondaryColor(BuildContext context, {double? opacity}) {
+    final theme = Theme.of(context);
+    final fallback =
+        theme.textTheme.bodyMedium?.color?.withOpacity(0.7) ??
+        (theme.colorScheme.onSurface.withOpacity(0.7));
     return _getDeviceColor(
       context: context,
-      lightMobile: LightThemeColors.textSecondaryMobile,
-      lightTablet: LightThemeColors.textSecondaryTablet,
-      lightDesktop: LightThemeColors.textSecondaryDesktop,
-      darkMobile: DarkThemeColors.textSecondaryMobile,
-      darkTablet: DarkThemeColors.textSecondaryTablet,
-      darkDesktop: DarkThemeColors.textSecondaryDesktop,
+      lightMobile: AdaptiveConfig.lightConfig?.textSecondaryMobile ?? fallback,
+      lightTablet: AdaptiveConfig.lightConfig?.textSecondaryTablet ?? fallback,
+      lightDesktop:
+          AdaptiveConfig.lightConfig?.textSecondaryDesktop ?? fallback,
+      darkMobile: AdaptiveConfig.darkConfig?.textSecondaryMobile ?? fallback,
+      darkTablet: AdaptiveConfig.darkConfig?.textSecondaryTablet ?? fallback,
+      darkDesktop: AdaptiveConfig.darkConfig?.textSecondaryDesktop ?? fallback,
       opacity: opacity,
     );
   }
 
   static Color textHintColor(BuildContext context, {double? opacity}) {
+    final theme = Theme.of(context);
+    final fallback = theme.hintColor;
     return _getDeviceColor(
       context: context,
-      lightMobile: LightThemeColors.textHintMobile,
-      lightTablet: LightThemeColors.textHintTablet,
-      lightDesktop: LightThemeColors.textHintDesktop,
-      darkMobile: DarkThemeColors.textHintMobile,
-      darkTablet: DarkThemeColors.textHintTablet,
-      darkDesktop: DarkThemeColors.textHintDesktop,
+      lightMobile: AdaptiveConfig.lightConfig?.textHintMobile ?? fallback,
+      lightTablet: AdaptiveConfig.lightConfig?.textHintTablet ?? fallback,
+      lightDesktop: AdaptiveConfig.lightConfig?.textHintDesktop ?? fallback,
+      darkMobile: AdaptiveConfig.darkConfig?.textHintMobile ?? fallback,
+      darkTablet: AdaptiveConfig.darkConfig?.textHintTablet ?? fallback,
+      darkDesktop: AdaptiveConfig.darkConfig?.textHintDesktop ?? fallback,
       opacity: opacity,
     );
   }
 
   static Color borderColor(BuildContext context, {double? opacity}) {
+    final theme = Theme.of(context);
+    final fallback = theme.dividerColor;
     return _getDeviceColor(
       context: context,
-      lightMobile: LightThemeColors.borderMobile,
-      lightTablet: LightThemeColors.borderTablet,
-      lightDesktop: LightThemeColors.borderDesktop,
-      darkMobile: DarkThemeColors.borderMobile,
-      darkTablet: DarkThemeColors.borderTablet,
-      darkDesktop: DarkThemeColors.borderDesktop,
+      lightMobile: AdaptiveConfig.lightConfig?.borderMobile ?? fallback,
+      lightTablet: AdaptiveConfig.lightConfig?.borderTablet ?? fallback,
+      lightDesktop: AdaptiveConfig.lightConfig?.borderDesktop ?? fallback,
+      darkMobile: AdaptiveConfig.darkConfig?.borderMobile ?? fallback,
+      darkTablet: AdaptiveConfig.darkConfig?.borderTablet ?? fallback,
+      darkDesktop: AdaptiveConfig.darkConfig?.borderDesktop ?? fallback,
       opacity: opacity,
     );
   }
 
   static Color dividerColor(BuildContext context, {double? opacity}) {
+    final theme = Theme.of(context);
+    final fallback = theme.dividerColor;
     return _getDeviceColor(
       context: context,
-      lightMobile: LightThemeColors.dividerMobile,
-      lightTablet: LightThemeColors.dividerTablet,
-      lightDesktop: LightThemeColors.dividerDesktop,
-      darkMobile: DarkThemeColors.dividerMobile,
-      darkTablet: DarkThemeColors.dividerTablet,
-      darkDesktop: DarkThemeColors.dividerDesktop,
+      lightMobile: AdaptiveConfig.lightConfig?.dividerMobile ?? fallback,
+      lightTablet: AdaptiveConfig.lightConfig?.dividerTablet ?? fallback,
+      lightDesktop: AdaptiveConfig.lightConfig?.dividerDesktop ?? fallback,
+      darkMobile: AdaptiveConfig.darkConfig?.dividerMobile ?? fallback,
+      darkTablet: AdaptiveConfig.darkConfig?.dividerTablet ?? fallback,
+      darkDesktop: AdaptiveConfig.darkConfig?.dividerDesktop ?? fallback,
       opacity: opacity,
     );
   }
 
   static Color shadowColor(BuildContext context, {double? opacity}) {
+    final fallback = Colors.black.withOpacity(0.12);
     return _getDeviceColor(
       context: context,
-      lightMobile: LightThemeColors.shadowMobile,
-      lightTablet: LightThemeColors.shadowTablet,
-      lightDesktop: LightThemeColors.shadowDesktop,
-      darkMobile: DarkThemeColors.shadowMobile,
-      darkTablet: DarkThemeColors.shadowTablet,
-      darkDesktop: DarkThemeColors.shadowDesktop,
+      lightMobile: AdaptiveConfig.lightConfig?.shadowMobile ?? fallback,
+      lightTablet: AdaptiveConfig.lightConfig?.shadowTablet ?? fallback,
+      lightDesktop: AdaptiveConfig.lightConfig?.shadowDesktop ?? fallback,
+      darkMobile: AdaptiveConfig.darkConfig?.shadowMobile ?? fallback,
+      darkTablet: AdaptiveConfig.darkConfig?.shadowTablet ?? fallback,
+      darkDesktop: AdaptiveConfig.darkConfig?.shadowDesktop ?? fallback,
       opacity: opacity,
     );
   }
 
   static Color iconColor(BuildContext context, {double? opacity}) {
+    final theme = Theme.of(context);
+    final fallback = theme.iconTheme.color ?? theme.colorScheme.onSurface;
     return _getDeviceColor(
       context: context,
-      lightMobile: LightThemeColors.iconMobile,
-      lightTablet: LightThemeColors.iconTablet,
-      lightDesktop: LightThemeColors.iconDesktop,
-      darkMobile: DarkThemeColors.iconMobile,
-      darkTablet: DarkThemeColors.iconTablet,
-      darkDesktop: DarkThemeColors.iconDesktop,
+      lightMobile: AdaptiveConfig.lightConfig?.iconMobile ?? fallback,
+      lightTablet: AdaptiveConfig.lightConfig?.iconTablet ?? fallback,
+      lightDesktop: AdaptiveConfig.lightConfig?.iconDesktop ?? fallback,
+      darkMobile: AdaptiveConfig.darkConfig?.iconMobile ?? fallback,
+      darkTablet: AdaptiveConfig.darkConfig?.iconTablet ?? fallback,
+      darkDesktop: AdaptiveConfig.darkConfig?.iconDesktop ?? fallback,
       opacity: opacity,
     );
   }
 
   static Color iconSecondaryColor(BuildContext context, {double? opacity}) {
+    final theme = Theme.of(context);
+    final base = theme.iconTheme.color ?? theme.colorScheme.onSurface;
+    final fallback = base.withOpacity(0.6);
     return _getDeviceColor(
       context: context,
-      lightMobile: LightThemeColors.iconSecondaryMobile,
-      lightTablet: LightThemeColors.iconSecondaryTablet,
-      lightDesktop: LightThemeColors.iconSecondaryDesktop,
-      darkMobile: DarkThemeColors.iconSecondaryMobile,
-      darkTablet: DarkThemeColors.iconSecondaryTablet,
-      darkDesktop: DarkThemeColors.iconSecondaryDesktop,
+      lightMobile: AdaptiveConfig.lightConfig?.iconSecondaryMobile ?? fallback,
+      lightTablet: AdaptiveConfig.lightConfig?.iconSecondaryTablet ?? fallback,
+      lightDesktop:
+          AdaptiveConfig.lightConfig?.iconSecondaryDesktop ?? fallback,
+      darkMobile: AdaptiveConfig.darkConfig?.iconSecondaryMobile ?? fallback,
+      darkTablet: AdaptiveConfig.darkConfig?.iconSecondaryTablet ?? fallback,
+      darkDesktop: AdaptiveConfig.darkConfig?.iconSecondaryDesktop ?? fallback,
       opacity: opacity,
     );
   }
